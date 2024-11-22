@@ -1,0 +1,25 @@
+<nav class="navbar bg-body-tertiary">
+  <div class="container-fluid">
+    Admin Dashboard
+  </div>
+</nav>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col" sortable="name">Number</th>
+      <th scope="col" sortable="area">Status</th>
+      <th scope="col" sortable="population">Messages</th>
+    </tr>
+  </thead>
+  <tbody *ngFor="let item of tempNumbers; let i = index">
+    <tr>
+      <th scope="row"></th>
+      <td>{{ i + 1 }}</td>
+      <td>{{ item.number}}</td>
+      <td *ngIf="item.status === 'inactive'">Inactive</td>
+      <td *ngIf="item.status === 'active'">Active</td>
+      <td>{{ item.messages | number}}</td>
+    </tr>
+  </tbody>
+</table>
