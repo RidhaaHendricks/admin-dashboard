@@ -12,13 +12,10 @@ import { DataService } from './express-server/data.service';
 })
 
 export class AdminDashboardComponent implements OnInit {
-  title = 'admin-dashboard';
   tempNumbers: IAdminDashboard[] = [];
   data: any;
 
-  constructor(private dataService: DataService) {
-    
-  }
+  constructor(private dataService: DataService) {}
 
   ngOnInit() {
     this.dataService.getData().subscribe(response => {

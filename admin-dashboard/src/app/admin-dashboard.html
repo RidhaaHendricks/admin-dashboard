@@ -14,7 +14,6 @@
   </thead>
   <tbody *ngFor="let item of data; let i = index">
     <tr>
-      <th scope="row"></th>
       <td>{{ i + 1 }}</td>
       <td>{{ item.number}}</td>
       <td *ngIf="item.status === 'inactive'">Inactive</td>
