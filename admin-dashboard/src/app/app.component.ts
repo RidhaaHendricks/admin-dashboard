@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { IAdminDashboard } from './models/admin-dashboard.model';
+import { DataService } from './express-server/data.service';
 
 @Component({
   selector: 'app-root',
@@ -10,16 +11,19 @@ import { IAdminDashboard } from './models/admin-dashboard.model';
   ]
 })
 
-export class AdminDashboardComponent {
+export class AdminDashboardComponent implements OnInit {
   title = 'admin-dashboard';
   tempNumbers: IAdminDashboard[] = [];
+  data: any;
 
-  constructor() {
-    this.tempNumbers = [
-      { id: 1, number: "1234567890", status: "active", messages: 10 },
-      { id: 2, number: "0987654321", status: "inactive", messages: 0 },
-      { id: 3, number: "1122334455", status: "active", messages: 5 },
-      { id: 4, number: "1122134455", status: "active", messages: 8 }
-    ]
+  constructor(private dataService: DataService) {
+    
   }
+
+  ngOnInit() {
+    this.dataService.getData().subscribe(response => {
+      this.data = response.message;
+    });
+  }
+
 }
